@@ -183,7 +183,8 @@ export function standard (options = {}, ...userConfigs) {
       rules: {
         'ts/explicit-function-return-type': 'off',
         'ts/explicit-member-accessibility': 'off',
-        'ts/explicit-module-boundary-types': 'off'
+        'ts/explicit-module-boundary-types': 'off',
+        'ts/triple-slash-reference': 'off'
       }
     })
   }
