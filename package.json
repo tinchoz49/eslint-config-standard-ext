@@ -1,10 +1,10 @@
 {
   "name": "eslint-config-standard-ext",
   "type": "module",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.9",
+  "description": "An extended standard eslint configuration",
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [],
   "exports": {
     ".": {

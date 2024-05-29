@@ -9,23 +9,23 @@ import eslintPromise from 'eslint-plugin-promise'
  * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
  */
 export default function javascriptStandardRules (organizeImports = true) {
-  return async config => {
+  return async (config) => {
     return {
       ...config,
       plugins: {
         ...config.plugins,
-        promise: eslintPromise
+        promise: eslintPromise,
       },
       rules: {
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
         'array-callback-return': ['error', {
           allowImplicit: false,
-          checkForEach: false
+          checkForEach: false,
         }],
         camelcase: ['error', {
           allow: ['^UNSAFE_'],
           ignoreGlobals: true,
-          properties: 'never'
+          properties: 'never',
         }],
         'constructor-super': 'error',
         'default-case-last': 'error',
@@ -102,13 +102,13 @@ export default function javascriptStandardRules (organizeImports = true) {
         'no-unused-expressions': ['error', {
           allowShortCircuit: true,
           allowTaggedTemplates: true,
-          allowTernary: true
+          allowTernary: true,
         }],
         'no-unused-vars': ['error', {
           args: 'none',
           caughtErrors: 'none',
           ignoreRestSiblings: true,
-          vars: 'all'
+          vars: 'all',
         }],
         'no-use-before-define': ['error', { classes: false, functions: false, variables: false }],
         'no-useless-backreference': 'error',
@@ -133,7 +133,7 @@ export default function javascriptStandardRules (organizeImports = true) {
         'unicode-bom': ['error', 'never'],
         'use-isnan': ['error', {
           enforceForIndexOf: true,
-          enforceForSwitchCase: true
+          enforceForSwitchCase: true,
         }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
         yoda: ['error', 'never'],
@@ -152,17 +152,17 @@ export default function javascriptStandardRules (organizeImports = true) {
                     ['parent-type', 'sibling-type', 'index-type'],
                     ['parent', 'sibling', 'index'],
                     'object',
-                    'unknown'
+                    'unknown',
                   ],
                   order: 'asc',
-                  type: 'natural'
-                }
+                  type: 'natural',
+                },
               ],
               'perfectionist/sort-named-exports': 'error',
-              'perfectionist/sort-named-imports': 'error'
+              'perfectionist/sort-named-imports': 'error',
             }
-          : {})
-      }
+          : {}),
+      },
     }
   }
 }

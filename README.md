@@ -1,6 +1,11 @@
-# An `ext`ended standard eslint config
+# An `ext`ended standard eslint configuration
 
-Using same rules as the original `standard`.
+Using `almost` same rules as the original `standard`.
+
+Almost:
+
+- `arrow-parens`: Require parentheses around arrow function arguments.
+- `comma-dangle`: Require trailing commas.
 
 Thanks to [antfu/eslint-config](https://github.com/antfu/eslint-config) extended to support:
 
@@ -20,7 +25,7 @@ Thanks to [antfu/eslint-config](https://github.com/antfu/eslint-config) extended
 ## Install
 
 ```bash
-$ npm install --save-dev eslint @antfu/eslint-config
+$ npm install --save-dev eslint eslint-config-standard-ext
 ```
 
 ## Usage
