@@ -7,18 +7,15 @@ Almost:
 - `arrow-parens`: Require parentheses around arrow function arguments.
 - `comma-dangle`: Require trailing commas.
 
-Thanks to [antfu/eslint-config](https://github.com/antfu/eslint-config) extended to support:
+Thanks to [antfu/eslint-config][eslint-config] extended to support:
 
-- Auto fix for formatting (aimed to be used standalone **without** Prettier)
+- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, etc. Out-of-box.
+- Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Optional [React](#react), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro), [Solid](#solid) support
-- Optional [formatters](#formatters) support for formatting CSS, HTML, XML, etc.
-- **Style principle**: Minimal for reading, stable for diff, consistent
-  - Sorted imports, trailing commas not allowed
-  - Single quotes, no semi
-  - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+- Optional [React][eslint-config-react], [Svelte](eslint-config-svelte), [UnoCSS](eslint-config-unocss), [Astro](eslint-config-astro), [Solid](eslint-config-solid) support
+- Optional [formatters](#eslint-config-formatters) support for formatting CSS, HTML, XML, Astro, etc.
 - Respects `.gitignore` by default
 - Supports ESLint v9 or v8.50.0+
 
@@ -46,3 +43,11 @@ It uses same options as [antfu/eslint-config](https://github.com/antfu/eslint-co
 Additional options:
   - **javascript.organizeImports**: `boolean=true` Add support for sorting imports/exports.
   - **astro.a11y**: `boolean=false` Include a11y rules for astro files. Required: `eslint-plugin-jsx-a11y`.
+
+[eslint-config]: https://github.com/antfu/eslint-config
+[eslint-config-react]: https://github.com/antfu/eslint-config#react
+[eslint-config-svelte]: https://github.com/antfu/eslint-config#svelte
+[eslint-config-unocss]: https://github.com/antfu/eslint-config#unocss
+[eslint-config-astro]: https://github.com/antfu/eslint-config#astro
+[eslint-config-solid]: https://github.com/antfu/eslint-config#solid
+[eslint-config-formatters]: https://github.com/antfu/eslint-config#formatters
