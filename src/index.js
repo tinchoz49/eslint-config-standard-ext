@@ -40,7 +40,7 @@ import { isPackageExists } from 'local-pkg'
 import astro from './astro.js'
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
-import typescriptStandardRules from './typescript-standard-rules.js'
+import typescriptStandardRules, { typescriptTypeAwareRules } from './typescript-standard-rules.js'
 
 /**
  * @param {OptionsConfig & { astro?: AstroOptions, javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean } }} options
@@ -128,22 +128,28 @@ export function standard (options = {}, ...userConfigs) {
     })
 
   if (typescript) {
-    config.override('antfu/typescript/rules', typescriptStandardRules('tsconfigPath' in resolveSubOptions(options, 'typescript')))
-    config.override('antfu/typescript/disables/dts', {
-      rules: {
-        'ts/triple-slash-reference': 'off',
-      },
-    })
-    config.append({
-      files: ['**/*.js', '**/*.cjs', '**/*.mjs', '**/*.jsx'],
-      name: 'typescript/disables/javascript',
-      rules: {
-        'ts/explicit-function-return-type': 'off',
-        'ts/explicit-member-accessibility': 'off',
-        'ts/explicit-module-boundary-types': 'off',
-        'ts/triple-slash-reference': 'off',
-      },
-    })
+    config.override('antfu/typescript/rules', typescriptStandardRules())
+
+    if ('tsconfigPath' in resolveSubOptions(options, 'typescript')) {
+      config.override('antfu/typescript/rules-type-aware', typescriptTypeAwareRules())
+    }
+
+    config
+      .override('antfu/typescript/disables/dts', {
+        rules: {
+          'ts/triple-slash-reference': 'off',
+        },
+      })
+      .append({
+        files: ['**/*.js', '**/*.cjs', '**/*.mjs', '**/*.jsx'],
+        name: 'typescript/disables/javascript',
+        rules: {
+          'ts/explicit-function-return-type': 'off',
+          'ts/explicit-member-accessibility': 'off',
+          'ts/explicit-module-boundary-types': 'off',
+          'ts/triple-slash-reference': 'off',
+        },
+      })
   }
 
   // better astro support

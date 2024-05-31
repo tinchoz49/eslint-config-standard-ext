@@ -2,67 +2,64 @@
 
 /** @typedef {import('@antfu/eslint-config').TypedFlatConfigItem} TypedFlatConfigItem */
 
-/** @type {TypedFlatConfigItem['rules']} */
-const TYPE_AWARE_RULES = {
-  'dot-notation': 'off',
-  'no-implied-eval': 'off',
-  'no-throw-literal': 'off',
-  'ts/await-thenable': ['error'],
-  'ts/consistent-type-exports': ['error', {
-    fixMixedExportsWithInlineTypeSpecifier: true,
-  }],
-  'ts/dot-notation': ['error', {
-    allowIndexSignaturePropertyAccess: false,
-    allowKeywords: true,
-    allowPattern: '',
-    allowPrivateClassPropertyAccess: false,
-    allowProtectedClassPropertyAccess: false,
-  }],
-  'ts/no-base-to-string': ['error'],
-  'ts/no-confusing-void-expression': ['error', { ignoreArrowShorthand: false, ignoreVoidOperator: false }],
-  'ts/no-floating-promises': ['error'],
-  'ts/no-for-in-array': ['error'],
-  'ts/no-implied-eval': ['error'],
-  'ts/no-misused-promises': ['error'],
-  'ts/no-unnecessary-boolean-literal-compare': ['error'],
-  'ts/no-unnecessary-type-assertion': ['error'],
-  'ts/no-unsafe-argument': ['error'],
-  'ts/non-nullable-type-assertion-style': ['error'],
-  'ts/only-throw-error': ['error', { allowThrowingAny: false, allowThrowingUnknown: false }],
-  'ts/prefer-includes': ['error'],
-  'ts/prefer-nullish-coalescing': ['error', { ignoreConditionalTests: false, ignoreMixedLogicalExpressions: false }],
-  'ts/prefer-optional-chain': ['error'],
-  'ts/prefer-promise-reject-errors': ['error'],
-  'ts/prefer-readonly': ['error'],
-  'ts/prefer-reduce-type-parameter': ['error'],
-  'ts/prefer-return-this-type': ['error'],
-  'ts/promise-function-async': ['error'],
-  'ts/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
-  'ts/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
-  'ts/restrict-template-expressions': ['error', { allowNumber: true }],
-  'ts/return-await': ['error', 'always'],
-  'ts/strict-boolean-expressions': ['error', {
-    allowAny: false,
-    allowNullableBoolean: false,
-    allowNullableNumber: false,
-    allowNullableObject: false,
-    allowNullableString: false,
-    allowNumber: false,
-    allowString: false,
-  }],
-  'ts/unbound-method': ['error', { ignoreStatic: false }],
-}
-
 /**
- * @param {boolean | undefined} typeAware
  * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
  */
-export default function typescriptStandardRules (typeAware) {
+export function typescriptTypeAwareRules () {
   return async (config) => {
     return {
       ...config,
       rules: {
-        ...(typeAware ? TYPE_AWARE_RULES : {}),
+        'dot-notation': 'off',
+        'no-implied-eval': 'off',
+        'no-throw-literal': 'off',
+        'ts/await-thenable': ['error'],
+        'ts/consistent-type-exports': ['error', {
+          fixMixedExportsWithInlineTypeSpecifier: true,
+        }],
+        'ts/dot-notation': ['error', {
+          allowIndexSignaturePropertyAccess: false,
+          allowKeywords: true,
+          allowPattern: '',
+          allowPrivateClassPropertyAccess: false,
+          allowProtectedClassPropertyAccess: false,
+        }],
+        'ts/no-base-to-string': ['error'],
+        'ts/no-confusing-void-expression': ['error', { ignoreArrowShorthand: false, ignoreVoidOperator: false }],
+        'ts/no-floating-promises': ['error'],
+        'ts/no-for-in-array': ['error'],
+        'ts/no-implied-eval': ['error'],
+        'ts/no-misused-promises': ['error'],
+        'ts/no-unnecessary-boolean-literal-compare': ['error'],
+        'ts/no-unnecessary-type-assertion': ['error'],
+        'ts/no-unsafe-argument': ['error'],
+        'ts/non-nullable-type-assertion-style': ['error'],
+        'ts/only-throw-error': ['error', { allowThrowingAny: false, allowThrowingUnknown: false }],
+        'ts/prefer-includes': ['error'],
+        'ts/prefer-optional-chain': ['error'],
+        'ts/prefer-promise-reject-errors': ['error'],
+        'ts/prefer-readonly': ['error'],
+        'ts/prefer-reduce-type-parameter': ['error'],
+        'ts/prefer-return-this-type': ['error'],
+        'ts/promise-function-async': ['error'],
+        'ts/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
+        'ts/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
+        'ts/restrict-template-expressions': ['error', { allowNumber: true }],
+        'ts/return-await': ['error', 'always'],
+        'ts/unbound-method': ['error', { ignoreStatic: false }],
+      },
+    }
+  }
+}
+
+/**
+ * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
+ */
+export default function typescriptStandardRules () {
+  return async (config) => {
+    return {
+      ...config,
+      rules: {
         'no-dupe-class-members': 'off',
         'no-loss-of-precision': 'off',
         'no-redeclare': 'off',
