@@ -44,5 +44,9 @@
     "eslint-plugin-perfectionist": {
       "astro-eslint-parser": "^1.0.2"
     }
+  },
+  "peerDependencies": {
+    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0"
   }
 }
