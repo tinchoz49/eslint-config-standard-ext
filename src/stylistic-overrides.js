@@ -55,7 +55,7 @@ export default ({ quotes = 'single' } = {}) => ({
   'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
   'style/operator-linebreak': ['error', 'after', { overrides: { ':': 'before', '?': 'before', '|>': 'before' } }],
   'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
-  'style/quote-props': ['error', 'as-needed'],
+  'style/quote-props': ['error', 'consistent-as-needed'],
   'style/quotes': ['error', quotes, { allowTemplateLiterals: false, avoidEscape: true }],
   'style/rest-spread-spacing': ['error', 'never'],
   'style/semi-spacing': ['error', { after: true, before: false }],

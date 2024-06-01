@@ -6,6 +6,7 @@ Almost:
 
 - `arrow-parens`: Require parentheses around arrow function arguments.
 - `comma-dangle`: Require trailing commas.
+- `quote-props`: Consistent as needed.
 
 Thanks to [antfu/eslint-config][eslint-config] extended to support:
 

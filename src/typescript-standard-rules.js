@@ -17,13 +17,7 @@ export function typescriptTypeAwareRules () {
         'ts/consistent-type-exports': ['error', {
           fixMixedExportsWithInlineTypeSpecifier: true,
         }],
-        'ts/dot-notation': ['error', {
-          allowIndexSignaturePropertyAccess: false,
-          allowKeywords: true,
-          allowPattern: '',
-          allowPrivateClassPropertyAccess: false,
-          allowProtectedClassPropertyAccess: false,
-        }],
+        'ts/dot-notation': ['error', { allowKeywords: true }],
         'ts/no-base-to-string': ['error'],
         'ts/no-confusing-void-expression': ['error', { ignoreArrowShorthand: false, ignoreVoidOperator: false }],
         'ts/no-floating-promises': ['error'],
