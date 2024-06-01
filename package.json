@@ -23,6 +23,10 @@
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "npm test && npm run build"
   },
+  "peerDependencies": {
+    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0"
+  },
   "dependencies": {
     "@antfu/eslint-config": "^2.19.1",
     "eslint-plugin-promise": "^6.2.0",
@@ -44,9 +48,5 @@
     "eslint-plugin-perfectionist": {
       "astro-eslint-parser": "^1.0.2"
     }
-  },
-  "peerDependencies": {
-    "eslint-plugin-astro": "^1.2.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0"
   }
 }
