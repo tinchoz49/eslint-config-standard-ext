@@ -2,10 +2,10 @@
 /** @typedef {import('@antfu/eslint-config').Rules} Rules */
 
 /**
- * @param {{ quotes?: 'single' | 'double', jsx?: boolean }} [options]
+ * @param {{ quotes?: 'single' | 'double' }} [options]
  * @returns {Partial<RulesRecord & Rules>}
  */
-export default ({ quotes = 'single', jsx = true } = {}) => ({
+export default ({ quotes = 'single' } = {}) => ({
   'antfu/curly': 'off',
   'antfu/if-newline': 'off',
   'antfu/top-level-function': 'off',
@@ -28,7 +28,6 @@ export default ({ quotes = 'single', jsx = true } = {}) => ({
   'style/eol-last': 'error',
   'style/func-call-spacing': ['error', 'never'],
   'style/generator-star-spacing': ['error', { after: true, before: true }],
-  ...(jsx ? { 'style/jsx-quotes': ['error', `prefer-${quotes}`] } : {}),
   'style/key-spacing': ['error', { afterColon: true, beforeColon: false }],
   'style/keyword-spacing': ['error', { after: true, before: true }],
   'style/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],

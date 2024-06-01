@@ -49,7 +49,6 @@ import typescriptStandardRules, { typescriptTypeAwareRules } from './typescript-
  */
 export function standard (options = {}, ...userConfigs) {
   const {
-    formatters = false,
     stylistic,
     typescript = isPackageExists('typescript'),
   } = options
@@ -59,21 +58,11 @@ export function standard (options = {}, ...userConfigs) {
   const config = antfu({
     ...options,
     astro: false,
-    formatters: typeof formatters === 'object'
-      ? {
-          ...formatters,
-          prettierOptions: {
-            jsxSingleQuote: quotes === 'single',
-            ...(formatters.prettierOptions || {}),
-          },
-        }
-      : options.formatters,
     stylistic: {
       indent,
       jsx,
       overrides: {
         ...stylisticOverrides({
-          jsx,
           quotes,
         }),
         ...overrides,
@@ -93,19 +82,6 @@ export function standard (options = {}, ...userConfigs) {
     .override('antfu/test/rules', {
       rules: {
         'test/no-only-tests': 'error',
-      },
-    })
-    .override('antfu/unicorn/rules', {
-      rules: {
-        'unicorn/no-useless-spread': 'error',
-      },
-    })
-    .override('antfu/yaml/rules', {
-      rules: {
-        'yaml/quotes': ['error', {
-          avoidEscape: true,
-          prefer: quotes,
-        }],
       },
     })
     .override('antfu/imports/rules', {
