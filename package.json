@@ -8,16 +8,18 @@
   "keywords": [],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "import": "./src/index.js",
       "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.js --dts --format esm,cjs",
+    "build": "tsup-node src/index.js --format cjs && tsup-node src/index.js --dts-only --format esm",
     "test": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
