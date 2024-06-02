@@ -22,7 +22,7 @@ export default function javascriptStandardRules (organizeImports = true) {
           allowImplicit: false,
           checkForEach: false,
         }],
-        camelcase: ['error', {
+        'camelcase': ['error', {
           allow: ['^UNSAFE_'],
           ignoreGlobals: true,
           properties: 'never',
@@ -30,7 +30,7 @@ export default function javascriptStandardRules (organizeImports = true) {
         'constructor-super': 'error',
         'default-case-last': 'error',
         'dot-notation': ['error', { allowKeywords: true }],
-        eqeqeq: ['error', 'always', { null: 'ignore' }],
+        'eqeqeq': ['error', 'always', { null: 'ignore' }],
         'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
         'no-array-constructor': 'error',
         'no-async-promise-executor': 'error',
@@ -136,7 +136,7 @@ export default function javascriptStandardRules (organizeImports = true) {
           enforceForSwitchCase: true,
         }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
-        yoda: ['error', 'never'],
+        'yoda': ['error', 'never'],
         ...(organizeImports
           ? {
               'perfectionist/sort-exports': 'error',

@@ -30,20 +30,16 @@
 /**
  * @typedef {import('@antfu/eslint-config').ConfigNames} ConfigNames
  */
-/**
- * @typedef {import('./astro.js').AstroOptions} AstroOptions
- */
 
 import { antfu, resolveSubOptions } from '@antfu/eslint-config'
 import { isPackageExists } from 'local-pkg'
 
-import astro from './astro.js'
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
 import typescriptStandardRules, { typescriptTypeAwareRules } from './typescript-standard-rules.js'
 
 /**
- * @param {OptionsConfig & { astro?: AstroOptions, javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean } }} options
+ * @param {OptionsConfig & { javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean } }} options
  * @param {...Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | FlatConfig[]>} userConfigs
  * @returns {FlatConfigComposer<TypedFlatConfigItem, ConfigNames>}
  */
@@ -126,11 +122,6 @@ export function standard (options = {}, ...userConfigs) {
           'ts/triple-slash-reference': 'off',
         },
       })
-  }
-
-  // better astro support
-  if (options?.astro) {
-    config.append(astro(options?.astro))
   }
 
   return config

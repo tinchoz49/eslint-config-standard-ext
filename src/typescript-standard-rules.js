@@ -62,14 +62,13 @@ export default function typescriptStandardRules () {
         'ts/adjacent-overload-signatures': ['error'],
         'ts/array-type': ['error', { default: 'array-simple' }],
         'ts/ban-ts-comment': ['error', {
-          minimumDescriptionLength: 3,
+          'minimumDescriptionLength': 3,
           'ts-check': false,
           'ts-expect-error': 'allow-with-description',
           'ts-ignore': true,
           'ts-nocheck': true,
         }],
         'ts/ban-tslint-comment': ['error'],
-
         'ts/ban-types': ['error', {
           extendDefaults: false,
           types: {
@@ -80,15 +79,15 @@ export default function typescriptStandardRules () {
                 '- If you want a type meaning "any value", you probably want `unknown` instead.',
               ].join('\n'),
             },
-            BigInt: {
+            'BigInt': {
               fixWith: 'bigint',
               message: 'Use bigint instead',
             },
-            Boolean: {
+            'Boolean': {
               fixWith: 'boolean',
               message: 'Use boolean instead',
             },
-            Function: {
+            'Function': {
               message: [
                 'The `Function` type accepts any function-like value.',
                 'It provides no type safety when calling the function, which can be a common source of bugs.',
@@ -96,23 +95,23 @@ export default function typescriptStandardRules () {
                 'If you are expecting the function to accept certain arguments, you should explicitly define the function shape.',
               ].join('\n'),
             },
-            Number: {
+            'Number': {
               fixWith: 'number',
               message: 'Use number instead',
             },
             // object typing
-            Object: {
+            'Object': {
               message: [
                 'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.',
                 '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
                 '- If you want a type meaning "any value", you probably want `unknown` instead.',
               ].join('\n'),
             },
-            String: {
+            'String': {
               fixWith: 'string',
               message: 'Use string instead',
             },
-            Symbol: {
+            'Symbol': {
               fixWith: 'symbol',
               message: 'Use symbol instead',
             },
