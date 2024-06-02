@@ -53,7 +53,6 @@ export function standard (options = {}, ...userConfigs) {
 
   const config = antfu({
     ...options,
-    astro: false,
     stylistic: {
       indent,
       jsx,
