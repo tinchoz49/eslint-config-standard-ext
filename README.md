@@ -4,6 +4,7 @@ Using `almost` same rules as the original `standard`.
 
 Almost:
 
+- `space-before-function-paren`: __NO__ more space before function paren.
 - `arrow-parens`: Require parentheses around arrow function arguments.
 - `comma-dangle`: Require trailing commas.
 - `quote-props`: Consistent as needed.
@@ -43,7 +44,6 @@ It uses same options as [antfu/eslint-config](https://github.com/antfu/eslint-co
 
 Additional options:
   - **javascript.organizeImports**: `boolean=true` Add support for sorting imports/exports.
-  - **astro.a11y**: `boolean=false` Include a11y rules for astro files. Required: `eslint-plugin-jsx-a11y`.
 
 [eslint-config]: https://github.com/antfu/eslint-config
 [eslint-config-react]: https://github.com/antfu/eslint-config#react

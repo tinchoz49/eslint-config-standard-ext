@@ -5,7 +5,7 @@
 /**
  * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
  */
-export function typescriptTypeAwareRules () {
+export function typescriptTypeAwareRules() {
   return async (config) => {
     return {
       ...config,
@@ -49,7 +49,7 @@ export function typescriptTypeAwareRules () {
 /**
  * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
  */
-export default function typescriptStandardRules () {
+export default function typescriptStandardRules() {
   return async (config) => {
     return {
       ...config,

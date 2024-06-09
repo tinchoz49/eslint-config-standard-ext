@@ -21,19 +21,24 @@
   ],
   "scripts": {
     "build": "tsup-node src/index.js --format cjs && tsup-node src/index.js --dts-only --format esm",
-    "test": "tsc",
+    "test": "node --test",
+    "posttest": "npm run lint && tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "npm test && npm run build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.20.0",
+    "@antfu/eslint-config": "^2.21.0",
     "eslint-plugin-promise": "^6.2.0",
     "local-pkg": "^0.5.0"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.12.12",
+    "eslint": "^9.4.0",
+    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-format": "^0.1.1",
+    "prettier-plugin-astro": "^0.13.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   },

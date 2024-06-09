@@ -1,0 +1,26 @@
+---
+/* eslint perfectionist/sort-objects: "error" */
+
+const isJsx = true
+const content = 'hi!'
+
+function hi() {
+  console.log('hi')
+}
+
+const props = { a: 'a', b: 'b' }
+---
+
+<article>
+  <div>{content}</div>
+  <div>
+    {isJsx && <h1>{content}</h1>}
+  </div>
+</article>
+
+<script>
+  const { log: logger } = console
+  document.querySelector('h1')?.addEventListener('click', () => {
+    logger('clicked')
+  })
+</script>

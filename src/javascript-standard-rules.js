@@ -8,7 +8,7 @@ import eslintPromise from 'eslint-plugin-promise'
  * @param {boolean} organizeImports
  * @returns {(config: TypedFlatConfigItem) => Promise<TypedFlatConfigItem>}
  */
-export default function javascriptStandardRules (organizeImports = true) {
+export default function javascriptStandardRules(organizeImports = true) {
   return async (config) => {
     return {
       ...config,
@@ -143,10 +143,18 @@ export default function javascriptStandardRules (organizeImports = true) {
               'perfectionist/sort-imports': [
                 'error',
                 {
-                  groups: [
+                  'custom-groups': {
+                    type: {
+                      'node-test': 'node:test',
+                    },
+                    value: {
+                      'node-test': 'node:test',
+                    },
+                  },
+                  'groups': [
                     'type',
                     'internal-type',
-                    'builtin',
+                    ['node-test', 'builtin'],
                     'external',
                     'internal',
                     ['parent-type', 'sibling-type', 'index-type'],
@@ -154,8 +162,8 @@ export default function javascriptStandardRules (organizeImports = true) {
                     'object',
                     'unknown',
                   ],
-                  order: 'asc',
-                  type: 'natural',
+                  'order': 'asc',
+                  'type': 'natural',
                 },
               ],
               'perfectionist/sort-named-exports': 'error',

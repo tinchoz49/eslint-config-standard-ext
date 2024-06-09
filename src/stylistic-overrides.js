@@ -60,7 +60,6 @@ export default ({ quotes = 'single' } = {}) => ({
   'style/rest-spread-spacing': ['error', 'never'],
   'style/semi-spacing': ['error', { after: true, before: false }],
   'style/space-before-blocks': ['error', 'always'],
-  'style/space-before-function-paren': ['error', 'always'],
   'style/space-in-parens': ['error', 'never'],
   'style/space-infix-ops': 'error',
   'style/space-unary-ops': ['error', { nonwords: false, words: true }],

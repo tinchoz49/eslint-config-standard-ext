@@ -34,6 +34,7 @@
 import { antfu, resolveSubOptions } from '@antfu/eslint-config'
 import { isPackageExists } from 'local-pkg'
 
+import fixFormatters from './fix-formatters.js'
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
 import typescriptStandardRules, { typescriptTypeAwareRules } from './typescript-standard-rules.js'
@@ -43,8 +44,9 @@ import typescriptStandardRules, { typescriptTypeAwareRules } from './typescript-
  * @param {...Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | FlatConfig[]>} userConfigs
  * @returns {FlatConfigComposer<TypedFlatConfigItem, ConfigNames>}
  */
-export function standard (options = {}, ...userConfigs) {
+export function standard(options = {}, ...userConfigs) {
   const {
+    formatters: formattersOptions = false,
     stylistic,
     typescript = isPackageExists('typescript'),
   } = options
@@ -53,6 +55,7 @@ export function standard (options = {}, ...userConfigs) {
 
   const config = antfu({
     ...options,
+    formatters: false,
     stylistic: {
       indent,
       jsx,
@@ -76,6 +79,7 @@ export function standard (options = {}, ...userConfigs) {
     })
     .override('antfu/test/rules', {
       rules: {
+        'test/no-import-node-test': 'off',
         'test/no-only-tests': 'error',
       },
     })
@@ -121,6 +125,14 @@ export function standard (options = {}, ...userConfigs) {
           'ts/triple-slash-reference': 'off',
         },
       })
+  }
+
+  if (formattersOptions) {
+    config.append(fixFormatters(
+      config,
+      formattersOptions,
+      resolveSubOptions(options, 'stylistic')
+    ))
   }
 
   return config
