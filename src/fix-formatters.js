@@ -45,7 +45,13 @@ export default async function fixFormatters(config, options, stylisticOptions) {
     config.onResolved((configs) => {
       const hasAstroSetup = configs.find(c => c.name === 'antfu/astro/setup')
       if (hasAstroSetup) {
-        delete configs.find(c => c.name === 'antfu/formatter/astro')?.languageOptions
+        const astroFormatter = configs.find(c => c.name === 'antfu/formatter/astro')
+        delete astroFormatter.languageOptions
+        const formatPrettier = astroFormatter.rules['format/prettier']
+        astroFormatter.rules['format/prettier'] = ['error', {
+          ...formatPrettier[1],
+          quoteProps: formatPrettier[1].quoteProps || 'consistent',
+        }]
       }
 
       return configs
