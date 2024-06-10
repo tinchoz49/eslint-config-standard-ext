@@ -85,5 +85,13 @@ export function standard(options = {}, ...userConfigs) {
     ))
   }
 
+  if (options?.astro) {
+    // fix astro from antfu/eslint-config errors
+    config.override('antfu/astro/rules', (config) => {
+      delete config.rules['style/indent']
+      return config
+    })
+  }
+
   return config
 }
