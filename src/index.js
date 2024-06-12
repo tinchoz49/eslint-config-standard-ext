@@ -46,6 +46,7 @@ import typescriptStandardRules from './typescript-standard-rules.js'
  */
 export function standard(options = {}, ...userConfigs) {
   const {
+    componentExts = [],
     formatters: formattersOptions = false,
     stylistic,
     typescript = isPackageExists('typescript'),
@@ -55,6 +56,7 @@ export function standard(options = {}, ...userConfigs) {
 
   const config = antfu({
     ...options,
+    componentExts: Array.from(new Set([...componentExts, '.astro']).values()),
     formatters: false,
     stylistic: {
       indent,
