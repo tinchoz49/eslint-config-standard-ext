@@ -54,9 +54,15 @@ export function standard(options = {}, ...userConfigs) {
 
   const { indent = 2, jsx = true, overrides = {}, quotes = 'single', semi = false } = typeof stylistic === 'object' ? stylistic : {}
 
+  const exts = new Set(componentExts)
+
+  if (options.astro) {
+    exts.add('astro')
+  }
+
   const config = antfu({
     ...options,
-    componentExts: Array.from(new Set([...componentExts, '.astro']).values()),
+    componentExts: Array.from(exts.values()),
     formatters: false,
     stylistic: {
       indent,
