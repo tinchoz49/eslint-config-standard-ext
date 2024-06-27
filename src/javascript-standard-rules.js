@@ -7,8 +7,6 @@
  * @typedef {import('eslint-flat-config-utils').FlatConfigComposer} FlatConfigComposer
  */
 
-import eslintPromise from 'eslint-plugin-promise'
-
 /**
  * @param {FlatConfigComposer<TypedFlatConfigItem, ConfigNames>} config
  * @param {boolean} organizeImports
@@ -48,10 +46,6 @@ export default function javascriptStandardRules(config, organizeImports = true) 
     .override('antfu/javascript/rules', async (config) => {
       return {
         ...config,
-        plugins: {
-          ...config.plugins,
-          promise: eslintPromise,
-        },
         rules: {
           'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
           'array-callback-return': ['error', {
@@ -163,7 +157,6 @@ export default function javascriptStandardRules(config, organizeImports = true) 
           'prefer-const': ['error', { destructuring: 'all' }],
           'prefer-promise-reject-errors': 'error',
           'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
-          'promise/param-names': ['error'],
           'sort-imports': 'off',
           'symbol-description': 'error',
           'unicode-bom': ['error', 'never'],

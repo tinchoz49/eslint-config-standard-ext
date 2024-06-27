@@ -15,7 +15,7 @@
  * @typedef {import('@antfu/eslint-config').OptionsConfig} OptionsConfig
  */
 /**
- *  @typedef {import('@antfu/eslint-config').OptionsIsInEditor} OptionsIsInEditor
+ * @typedef {import('@antfu/eslint-config').OptionsIsInEditor} OptionsIsInEditor
  */
 /**
  * @typedef {import('@antfu/eslint-config').OptionsOverrides} OptionsOverrides
@@ -100,6 +100,18 @@ export function standard(options = {}, ...userConfigs) {
       return config
     })
   }
+
+  config.override('antfu/jsdoc/rules', (config) => {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        'jsdoc/check-alignment': 'warn',
+        'jsdoc/check-indentation': 'warn',
+        'jsdoc/check-line-alignment': 'warn',
+      },
+    }
+  })
 
   return config
 }
