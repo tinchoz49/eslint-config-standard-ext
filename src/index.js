@@ -107,7 +107,6 @@ export function standard(options = {}, ...userConfigs) {
       rules: {
         ...config.rules,
         'jsdoc/check-alignment': 'warn',
-        'jsdoc/check-indentation': 'warn',
         'jsdoc/check-line-alignment': 'warn',
       },
     }
