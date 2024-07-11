@@ -34,16 +34,11 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "eslint": "^9.4.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-format": "^0.1.2",
     "prettier-plugin-astro": "^0.14.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
-  },
-  "overrides": {
-    "eslint-plugin-perfectionist": {
-      "astro-eslint-parser": "^1.0.2"
-    }
   }
 }
