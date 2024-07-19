@@ -1,5 +1,7 @@
 # An `ext`ended standard eslint configuration
 
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard--ext-05ae89.svg)](https://github.com/tinchoz49/eslint-config-standard-ext)
+
 Using `almost` same rules as the original `standard`.
 
 Almost:
