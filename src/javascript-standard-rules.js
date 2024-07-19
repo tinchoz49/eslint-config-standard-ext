@@ -174,9 +174,11 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                   {
                     'custom-groups': {
                       type: {
+                        'astro': 'astro:*',
                         'node-test': 'node:test',
                       },
                       value: {
+                        'astro': 'astro:*',
                         'node-test': 'node:test',
                       },
                     },
@@ -184,13 +186,15 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                       'type',
                       'internal-type',
                       ['node-test', 'builtin'],
+                      'astro',
                       'external',
-                      'internal',
+                      ['alias', 'internal'],
                       ['parent-type', 'sibling-type', 'index-type'],
                       ['parent', 'sibling', 'index'],
                       'object',
                       'unknown',
                     ],
+                    'internal-pattern': ['@/**', '~/**'],
                     'order': 'asc',
                     'type': 'natural',
                   },
