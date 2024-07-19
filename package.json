@@ -29,7 +29,7 @@
     "prepublishOnly": "npm test && npm run build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "~2.21.1",
+    "@antfu/eslint-config": "^2.23.0",
     "local-pkg": "^0.5.0"
   },
   "devDependencies": {
@@ -37,11 +37,8 @@
     "eslint": "^9.6.0",
     "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-format": "^0.1.2",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
-  },
-  "overrides": {
-    "eslint": "^9.6.0"
   }
 }
