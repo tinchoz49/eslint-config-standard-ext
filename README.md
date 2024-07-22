@@ -6,7 +6,7 @@ Using `almost` same rules as the original `standard`.
 
 Almost:
 
-- `space-before-function-paren`: __NO__ more space before function paren.
+- `space-before-function-paren`: **NO** more space before function paren.
 - `arrow-parens`: Require parentheses around arrow function arguments.
 - `comma-dangle`: Require trailing commas.
 - `quote-props`: Consistent as needed.
@@ -45,7 +45,8 @@ export default standard()
 It uses same options as [antfu/eslint-config](https://github.com/antfu/eslint-config?tab=readme-ov-file#customization)
 
 Additional options:
-  - **javascript.organizeImports**: `boolean=true` Add support for sorting imports/exports.
+
+- **javascript.organizeImports**: `boolean=true` Add support for sorting imports/exports.
 
 [eslint-config]: https://github.com/antfu/eslint-config
 [eslint-config-react]: https://github.com/antfu/eslint-config#react

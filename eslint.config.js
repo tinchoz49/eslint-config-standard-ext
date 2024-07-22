@@ -1,9 +1,11 @@
 import { standard } from './src/index.js'
 
 export default standard({
-  astro: true,
+  astro: {
+    config: 'all',
+  },
   formatters: {
-    astro: false,
+    markdown: true,
   },
 }, {
   ignores: ['tests/input/**'],
