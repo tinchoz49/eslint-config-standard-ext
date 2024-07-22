@@ -133,7 +133,14 @@ export function standard(options = {}, ...userConfigs) {
           ...astroOptions.overrides,
         },
         style: {
+          arrowParens: false,
+          blockSpacing: true,
+          commaDangle: 'always',
+          indent,
           pluginName: 'style',
+          quoteProps: 'consistent-as-needed',
+          quotes,
+          semi,
         },
         tsPluginName: 'ts',
       })

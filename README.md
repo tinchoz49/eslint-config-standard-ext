@@ -7,7 +7,6 @@ Using `almost` same rules as the original `standard`.
 Almost:
 
 - `space-before-function-paren`: **NO** more space before function paren.
-- `arrow-parens`: Require parentheses around arrow function arguments.
 - `comma-dangle`: Require trailing commas.
 - `quote-props`: Consistent as needed.
 
