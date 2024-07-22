@@ -124,7 +124,11 @@ export function standard(options = {}, ...userConfigs) {
   if (options?.astro) {
     const astroOptions = typeof options.astro === 'object' ? options.astro : {}
     config.append((async () => {
-      await ensurePackages(['eslint-astro-mate'])
+      await ensurePackages([
+        'eslint-astro-mate',
+        astroOptions?.config?.includes('a11y') && 'eslint-plugin-jsx-a11y',
+      ].filter(Boolean))
+
       const { astro } = await import('eslint-astro-mate')
       return astro({
         config: astroOptions.config,
