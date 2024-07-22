@@ -40,6 +40,20 @@ import { standard } from 'eslint-config-standard-ext'
 export default standard()
 ```
 
+## Improved support for Astro files
+
+```ts
+// eslint.config.js
+import { standard } from 'eslint-config-standard-ext'
+
+export default standard({
+  astro: {
+    config: 'all' | 'base' | 'recommended' | 'jsx-a11y-recommended' | 'jsx-a11y-strict' | undefined,
+    overrides: {} | undefined
+  } | true
+})
+```
+
 ## Customization
 
 It uses same options as [antfu/eslint-config](https://github.com/antfu/eslint-config?tab=readme-ov-file#customization)
