@@ -30,24 +30,36 @@
 /**
  * @typedef {import('@antfu/eslint-config').ConfigNames} ConfigNames
  */
+/**
+ * @typedef {import('@antfu/eslint-config').OptionsFormatters} OptionsFormatters
+ */
+/**
+ * @typedef {{
+ *  javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean }
+ *  astro?: OptionsOverrides & Pick<import('eslint-astro-mate').Options, 'config'>
+ *  formatters?: boolean | Omit<OptionsFormatters, 'astro'>
+ * }} ExtendOptions
+ */
+/**
+ * @typedef {Omit<OptionsConfig, 'astro' | 'formatters'> & ExtendOptions} StandardExtOptions
+ */
 
-import { antfu, resolveSubOptions } from '@antfu/eslint-config'
+import { antfu, ensurePackages, resolveSubOptions } from '@antfu/eslint-config'
 import { isPackageExists } from 'local-pkg'
 
-import fixFormatters from './fix-formatters.js'
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
 import typescriptStandardRules from './typescript-standard-rules.js'
 
 /**
- * @param {OptionsConfig & { javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean } }} options
+ * @param {StandardExtOptions} options
  * @param {...Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | FlatConfig[]>} userConfigs
  * @returns {FlatConfigComposer<TypedFlatConfigItem, ConfigNames>}
  */
 export function standard(options = {}, ...userConfigs) {
   const {
     componentExts = [],
-    formatters: formattersOptions = false,
+    formatters = false,
     stylistic,
     typescript = isPackageExists('typescript'),
   } = options
@@ -62,8 +74,21 @@ export function standard(options = {}, ...userConfigs) {
 
   const config = antfu({
     ...options,
+    astro: false,
     componentExts: Array.from(exts.values()),
-    formatters: false,
+    formatters: formatters
+      ? (typeof formatters === 'object'
+          ? { ...formatters, astro: false }
+          : {
+              astro: false,
+              css: true,
+              graphql: true,
+              html: true,
+              markdown: true,
+              slidev: isPackageExists('@slidev/cli'),
+              xml: isPackageExists('@prettier/plugin-xml'),
+            })
+      : formatters,
     stylistic: {
       indent,
       jsx,
@@ -85,22 +110,6 @@ export function standard(options = {}, ...userConfigs) {
     typescriptStandardRules(config, 'tsconfigPath' in resolveSubOptions(options, 'typescript'))
   }
 
-  if (formattersOptions) {
-    config.append(fixFormatters(
-      config,
-      formattersOptions,
-      resolveSubOptions(options, 'stylistic')
-    ))
-  }
-
-  if (options?.astro) {
-    // fix astro from antfu/eslint-config errors
-    config.override('antfu/astro/rules', (config) => {
-      delete config.rules['style/indent']
-      return config
-    })
-  }
-
   config.override('antfu/jsdoc/rules', (config) => {
     return {
       ...config,
@@ -111,6 +120,25 @@ export function standard(options = {}, ...userConfigs) {
       },
     }
   })
+
+  if (options?.astro) {
+    const astroOptions = typeof options.astro === 'object' ? options.astro : {}
+    config.append((async () => {
+      await ensurePackages(['eslint-astro-mate'])
+      const { astro } = await import('eslint-astro-mate')
+      return astro({
+        config: astroOptions.config,
+        overrides: {
+          'ts/explicit-function-return-type': 'off',
+          ...astroOptions.overrides,
+        },
+        style: {
+          pluginName: 'style',
+        },
+        tsPluginName: 'ts',
+      })
+    })())
+  }
 
   return config
 }

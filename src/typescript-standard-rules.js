@@ -76,7 +76,6 @@ export default function typescriptStandardRules(config, isTypeAware) {
       files: ['**/*.js', '**/*.cjs', '**/*.mjs', '**/*.jsx'],
       name: 'typescript/disables/javascript',
       rules: {
-        'ts/explicit-function-return-type': 'off',
         'ts/explicit-member-accessibility': 'off',
         'ts/explicit-module-boundary-types': 'off',
         'ts/triple-slash-reference': 'off',
@@ -116,12 +115,6 @@ export default function typescriptStandardRules(config, isTypeAware) {
             disallowTypeAnnotations: true,
             fixStyle: 'inline-type-imports',
             prefer: 'type-imports',
-          }],
-          'ts/explicit-function-return-type': ['error', {
-            allowDirectConstAssertionInArrowFunctions: true,
-            allowExpressions: true,
-            allowHigherOrderFunctions: true,
-            allowTypedFunctionExpressions: true,
           }],
           'ts/method-signature-style': ['error'],
           'ts/naming-convention': ['error', {
