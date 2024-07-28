@@ -172,7 +172,7 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                 'perfectionist/sort-imports': [
                   'error',
                   {
-                    'custom-groups': {
+                    customGroups: {
                       type: {
                         'astro': 'astro:*',
                         'node-test': 'node:test',
@@ -182,7 +182,7 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                         'node-test': 'node:test',
                       },
                     },
-                    'groups': [
+                    groups: [
                       'type',
                       'internal-type',
                       ['node-test', 'builtin'],
@@ -194,9 +194,9 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                       'object',
                       'unknown',
                     ],
-                    'internal-pattern': ['@/**', '~/**'],
-                    'order': 'asc',
-                    'type': 'natural',
+                    internalPattern: ['@/**', '~/**'],
+                    order: 'asc',
+                    type: 'natural',
                   },
                 ],
                 'perfectionist/sort-named-exports': 'error',
