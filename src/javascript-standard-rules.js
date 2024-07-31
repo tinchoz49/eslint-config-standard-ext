@@ -188,7 +188,7 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                       ['node-test', 'builtin'],
                       'astro',
                       'external',
-                      ['alias', 'internal'],
+                      'internal',
                       ['parent-type', 'sibling-type', 'index-type'],
                       ['parent', 'sibling', 'index'],
                       'object',
