@@ -2,7 +2,6 @@
   "name": "eslint-config-standard-ext",
   "type": "module",
   "version": "1.1.0",
-  "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771",
   "description": "An extended standard eslint configuration",
   "author": "",
   "license": "MIT",
@@ -29,12 +28,12 @@
     "prepublishOnly": "npm test && npm run build"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.24.0",
+    "@antfu/eslint-config": "^3.2.0",
     "local-pkg": "^0.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "eslint": "^9.6.0",
+    "eslint": "^9.9.1",
     "eslint-astro-mate": "^0.0.3",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"

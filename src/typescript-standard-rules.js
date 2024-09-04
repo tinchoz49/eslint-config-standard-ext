@@ -61,7 +61,7 @@ export default function typescriptStandardRules(config, isTypeAware) {
   }
 
   config
-    .override('antfu/typescript/disables/dts', {
+    .override('antfu/disables/dts', {
       rules: {
         'ts/triple-slash-reference': 'off',
       },
