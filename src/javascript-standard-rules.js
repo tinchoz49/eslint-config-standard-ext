@@ -174,20 +174,18 @@ export default function javascriptStandardRules(config, organizeImports = true) 
                   {
                     customGroups: {
                       type: {
-                        'astro': 'astro:*',
-                        'node-test': 'node:test',
+                        astro: 'astro:*',
                       },
                       value: {
-                        'astro': 'astro:*',
-                        'node-test': 'node:test',
+                        astro: 'astro:*',
                       },
                     },
                     groups: [
-                      'type',
+                      'builtin-type',
+                      'builtin',
+                      'external-type',
+                      ['astro', 'external'],
                       'internal-type',
-                      ['node-test', 'builtin'],
-                      'astro',
-                      'external',
                       'internal',
                       ['parent-type', 'sibling-type', 'index-type'],
                       ['parent', 'sibling', 'index'],

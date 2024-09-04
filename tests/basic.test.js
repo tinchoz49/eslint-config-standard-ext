@@ -1,8 +1,8 @@
 import assert from 'node:assert'
 import fs from 'node:fs/promises'
-import test from 'node:test'
 
 import { ESLint } from 'eslint'
+import test from 'node:test'
 
 import { standard } from '../src/index.js'
 
