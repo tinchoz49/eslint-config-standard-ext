@@ -88,6 +88,7 @@ export default function typescriptStandardRules(config, isTypeAware) {
           'no-dupe-class-members': 'off',
           'no-loss-of-precision': 'off',
           'no-redeclare': 'off',
+          'no-unused-vars': 'off',
           'no-use-before-define': 'off',
           'no-useless-constructor': 'off',
           'ts/adjacent-overload-signatures': ['error'],
@@ -147,7 +148,12 @@ export default function typescriptStandardRules(config, isTypeAware) {
             allowTernary: true,
             enforceForJSX: false,
           }],
-          'ts/no-unused-vars': 'off',
+          'ts/no-unused-vars': ['error', {
+            args: 'none',
+            caughtErrors: 'none',
+            ignoreRestSiblings: true,
+            vars: 'all',
+          }],
           'ts/no-use-before-define': ['error', {
             classes: false,
             enums: false,
