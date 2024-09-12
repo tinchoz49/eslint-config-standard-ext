@@ -9,9 +9,8 @@
 
 /**
  * @param {FlatConfigComposer<TypedFlatConfigItem, ConfigNames>} config
- * @param {boolean} organizeImports
  */
-export default function javascriptStandardRules(config, organizeImports = true) {
+export default function javascriptStandardRules(config) {
   config
     .override('antfu/jsdoc/rules', {
       rules: {
@@ -166,41 +165,6 @@ export default function javascriptStandardRules(config, organizeImports = true) 
           }],
           'valid-typeof': ['error', { requireStringLiterals: true }],
           'yoda': ['error', 'never'],
-          ...(organizeImports
-            ? {
-                'perfectionist/sort-exports': 'error',
-                'perfectionist/sort-imports': [
-                  'error',
-                  {
-                    customGroups: {
-                      type: {
-                        astro: 'astro:*',
-                      },
-                      value: {
-                        astro: 'astro:*',
-                      },
-                    },
-                    groups: [
-                      'builtin-type',
-                      'builtin',
-                      'external-type',
-                      ['astro', 'external'],
-                      'internal-type',
-                      'internal',
-                      ['parent-type', 'sibling-type', 'index-type'],
-                      ['parent', 'sibling', 'index'],
-                      'object',
-                      'unknown',
-                    ],
-                    internalPattern: ['@/**', '~/**'],
-                    order: 'asc',
-                    type: 'natural',
-                  },
-                ],
-                'perfectionist/sort-named-exports': 'error',
-                'perfectionist/sort-named-imports': 'error',
-              }
-            : {}),
         },
       }
     })

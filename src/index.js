@@ -35,7 +35,6 @@
  */
 /**
  * @typedef {{
- *  javascript?: OptionsIsInEditor & OptionsOverrides & { organizeImports?: boolean }
  *  astro?: OptionsOverrides & Pick<import('eslint-astro-mate').Options, 'config'>
  *  formatters?: boolean | Omit<OptionsFormatters, 'astro'>
  * }} ExtendOptions
@@ -104,7 +103,7 @@ export function standard(options = {}, ...userConfigs) {
     typescript,
   }, ...userConfigs)
 
-  javascriptStandardRules(config, options?.javascript?.organizeImports)
+  javascriptStandardRules(config)
 
   if (typescript) {
     typescriptStandardRules(config, 'tsconfigPath' in resolveSubOptions(options, 'typescript'))
@@ -117,6 +116,44 @@ export function standard(options = {}, ...userConfigs) {
         ...config.rules,
         'jsdoc/check-alignment': 'warn',
         'jsdoc/check-line-alignment': 'warn',
+      },
+    }
+  })
+
+  config.override('antfu/perfectionist/setup', (config) => {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        'perfectionist/sort-imports': [
+          'error',
+          {
+            customGroups: {
+              type: {
+                astro: 'astro:*',
+              },
+              value: {
+                astro: 'astro:*',
+              },
+            },
+            groups: [
+              'builtin-type',
+              'builtin',
+              'external-type',
+              ['astro', 'external'],
+              'internal-type',
+              'internal',
+              ['parent-type', 'sibling-type', 'index-type'],
+              ['parent', 'sibling', 'index'],
+              'object',
+              'unknown',
+            ],
+            internalPattern: ['@/**', '~/**'],
+            newlinesBetween: 'always',
+            order: 'asc',
+            type: 'natural',
+          },
+        ],
       },
     }
   })
