@@ -9,6 +9,7 @@ export default ({ quotes = 'single' } = {}) => ({
   'antfu/curly': 'off',
   'antfu/if-newline': 'off',
   'antfu/top-level-function': 'off',
+  'antfu/no-top-level-await': 'off',
   'curly': ['error', 'multi-line'],
   'style/array-bracket-spacing': ['error', 'never'],
   'style/arrow-spacing': ['error', { after: true, before: true }],
