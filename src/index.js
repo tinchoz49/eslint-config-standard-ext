@@ -148,7 +148,7 @@ export function standard(options = {}, ...userConfigs) {
               'object',
               'unknown',
             ],
-            internalPattern: ['@/**', '~/**'],
+            internalPattern: ['@/*', '~/*'],
             newlinesBetween: 'always',
             order: 'asc',
             type: 'natural',
