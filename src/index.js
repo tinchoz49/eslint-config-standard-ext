@@ -43,8 +43,9 @@
  * @typedef {Omit<OptionsConfig, 'astro' | 'formatters'> & ExtendOptions} StandardExtOptions
  */
 
-import { antfu, ensurePackages, resolveSubOptions } from '@antfu/eslint-config'
 import { isPackageExists } from 'local-pkg'
+
+import { antfu, ensurePackages, resolveSubOptions } from '@antfu/eslint-config'
 
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
@@ -93,11 +94,11 @@ export function standard(options = {}, ...userConfigs) {
       jsx,
       overrides: {
         ...stylisticOverrides({
-          quotes,
+          quotes: quotes === 'backtick' ? 'double' : quotes,
         }),
         ...overrides,
       },
-      quotes,
+      quotes: quotes === 'backtick' ? 'double' : quotes,
       semi,
     },
     typescript,
@@ -180,7 +181,7 @@ export function standard(options = {}, ...userConfigs) {
           indent,
           pluginName: 'style',
           quoteProps: 'consistent-as-needed',
-          quotes,
+          quotes: quotes === 'backtick' ? 'double' : quotes,
           semi,
         },
         tsPluginName: 'ts',
