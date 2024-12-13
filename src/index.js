@@ -131,10 +131,10 @@ export function standard(options = {}, ...userConfigs) {
           {
             customGroups: {
               type: {
-                astro: 'astro:*',
+                astro: ['^astro$', '^astro:.+'],
               },
               value: {
-                astro: 'astro:*',
+                astro: ['^astro:*', '^astro:.+'],
               },
             },
             groups: [
