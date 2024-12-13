@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-standard-ext",
   "type": "module",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "An extended standard eslint configuration",
   "author": "",
   "license": "MIT",
