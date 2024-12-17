@@ -43,9 +43,8 @@
  * @typedef {Omit<OptionsConfig, 'astro' | 'formatters'> & ExtendOptions} StandardExtOptions
  */
 
-import { isPackageExists } from 'local-pkg'
-
 import { antfu, ensurePackages, resolveSubOptions } from '@antfu/eslint-config'
+import { isPackageExists } from 'local-pkg'
 
 import javascriptStandardRules from './javascript-standard-rules.js'
 import stylisticOverrides from './stylistic-overrides.js'
@@ -149,7 +148,7 @@ export function standard(options = {}, ...userConfigs) {
               'object',
               'unknown',
             ],
-            internalPattern: ['@/*', '~/*'],
+            internalPattern: ['^@/.*', '^~/.*'],
             newlinesBetween: 'always',
             order: 'asc',
             type: 'natural',
